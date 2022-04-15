@@ -16,6 +16,16 @@ TEMPLATE = lib
 DEFINES += SMTP_BUILD
 win32:CONFIG += dll
 
+osx: {
+    CONFIG += app_bundle
+    target.path = $${OUT_PWD}/../sessions
+} else: {
+    target.path = $${OUT_PWD}/../sessions/bin
+}
+
+# install
+INSTALLS += target
+
 SOURCES += \
     src/emailaddress.cpp \
     src/mimeattachment.cpp \
